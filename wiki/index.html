@@ -20,22 +20,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" content="#f8f8f8">
   
-  <title>CPP笔记03 - Levi</title>
+  <title>项目 - Levi</title>
 
   
-    <meta name="description" content="第三章 处理数据大括号初始化{}初始化&#x3D;0 整型选择仅当有大型数组时，才有必要使用short 通用字符\U \u C++11 新增的类型char16_tchar32_t const限定符C++11增加autoauto不是为了简单类型推导存在的，是为了复杂类型推导而存在的 课后习题 c++为什么有多种整形？1因为不同整型有着不同的存储范围，为不同规模的数据准备">
-<meta property="og:type" content="website">
-<meta property="og:title" content="CPP笔记03">
-<meta property="og:url" content="https://illusionist0.github.io/notes/cpp3.html">
+    <meta property="og:type" content="website">
+<meta property="og:title" content="项目">
+<meta property="og:url" content="https://illusionist0.github.io/project/wiki/index.html">
 <meta property="og:site_name" content="Levi">
-<meta property="og:description" content="第三章 处理数据大括号初始化{}初始化&#x3D;0 整型选择仅当有大型数组时，才有必要使用short 通用字符\U \u C++11 新增的类型char16_tchar32_t const限定符C++11增加autoauto不是为了简单类型推导存在的，是为了复杂类型推导而存在的 课后习题 c++为什么有多种整形？1因为不同整型有着不同的存储范围，为不同规模的数据准备">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-04-12T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-03-22T23:26:31.000Z">
 <meta property="article:author" content="Levi Tsui">
-<meta property="article:tag" content="C++">
-<meta property="article:tag" content="CPP">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@illusionist28">
   
   
 
@@ -44,7 +39,7 @@
 
   
     
-<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/project/css/main.css">
 
   
 
@@ -65,47 +60,48 @@
 
 
   <div class='l_body' id='start'>
-    <aside class='l_left' layout='page'>
+    <aside class='l_left' layout='wiki_index'>
     
 
   
 
-<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://wx.qlogo.cn/mmhead/BslzcqWyOVY6ppSfiaRmyzyVrBspsB9zJnYrszmfOvmM/0" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">Levi</div><div class="sub normal cap">勿以浮沙筑高台</div><div class="sub hover cap" style="opacity:0">Don't Quit</div></a></div>
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/project/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://wx.qlogo.cn/mmhead/BslzcqWyOVY6ppSfiaRmyzyVrBspsB9zJnYrszmfOvmM/0" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/image/2659360.svg';"></a><a class="title" href="/project/"><div class="main" ff="title">Levi</div><div class="sub normal cap">勿以浮沙筑高台</div><div class="sub hover cap" style="opacity:0">Don't Quit</div></a></div>
 
-<nav class="menu dis-select"><a class="nav-item" href="/">文章</a><a class="nav-item" href="/wiki/">项目</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/more/">更多</a></nav>
+<nav class="menu dis-select"><a class="nav-item" href="/project/">文章</a><a class="nav-item active" href="/project/wiki/">项目</a></nav>
 </header>
 
 
 <div class="widgets">
+<widget class="widget-wrapper search"><div class="widget-body"><div class="search-wrapper" id="search"><form class="search-form"><input type="text" class="search-input" id="search-input" data-filter="/wiki/" placeholder="文档搜索"><svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div></div></widget>
 
-<widget class="widget-wrapper toc single" id="data-toc"><div class="widget-header cap dis-select"><span class="name">CPP笔记03</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%A7%E6%8B%AC%E5%8F%B7%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">大括号初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E5%9E%8B%E9%80%89%E6%8B%A9"><span class="toc-text">整型选择</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E5%AD%97%E7%AC%A6"><span class="toc-text">通用字符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-11-%E6%96%B0%E5%A2%9E%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="toc-text">C++11 新增的类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#const%E9%99%90%E5%AE%9A%E7%AC%A6"><span class="toc-text">const限定符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-11%E5%A2%9E%E5%8A%A0auto"><span class="toc-text">C++11增加auto</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98"><span class="toc-text">课后习题</span></a></li></ol></div></div></widget>
+<widget class="widget-wrapper recent"><div class="widget-header cap theme dis-select"><span class="name">最近更新</span></div><div class="widget-body related-posts fs14"><a class="item title" href="/project/wiki/stellar/index.html"><span class="title"><strong>Stellar</strong><span class="dot"></span>这是分页标题</span></a></div></widget>
 
-<widget class="widget-wrapper search"><div class="widget-body"><div class="search-wrapper" id="search"><form class="search-form"><input type="text" class="search-input" id="search-input" placeholder="站内搜索"><svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div></div></widget>
+
 </div>
 
 
     </aside>
-    <div class='l_main'>
+    <div class='l_main list'>
       
   
 
-<header class="header mobile-only"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://wx.qlogo.cn/mmhead/BslzcqWyOVY6ppSfiaRmyzyVrBspsB9zJnYrszmfOvmM/0" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">Levi</div><div class="sub normal cap">勿以浮沙筑高台</div><div class="sub hover cap" style="opacity:0">Don't Quit</div></a></div></header>
+<header class="header mobile-only"><div class="logo-wrap"><a class="avatar" href="/project/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://wx.qlogo.cn/mmhead/BslzcqWyOVY6ppSfiaRmyzyVrBspsB9zJnYrszmfOvmM/0" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/image/2659360.svg';"></a><a class="title" href="/project/"><div class="main" ff="title">Levi</div><div class="sub normal cap">勿以浮沙筑高台</div><div class="sub hover cap" style="opacity:0">Don't Quit</div></a></div></header>
 
 
 
       
 
+  
 
-<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/notes/cpp3.html">CPP笔记03</a></div></div>
-<article class="md-text content page"><h1 class="article-title"><span>CPP笔记03</span></h1><h1 id="第三章-处理数据"><a href="#第三章-处理数据" class="headerlink" title="第三章 处理数据"></a>第三章 处理数据</h1><h2 id="大括号初始化"><a href="#大括号初始化" class="headerlink" title="大括号初始化"></a>大括号初始化</h2><p>{}初始化&#x3D;0</p>
-<h2 id="整型选择"><a href="#整型选择" class="headerlink" title="整型选择"></a>整型选择</h2><p>仅当有大型数组时，才有必要使用short</p>
-<h2 id="通用字符"><a href="#通用字符" class="headerlink" title="通用字符"></a>通用字符</h2><p>\U \u</p>
-<h2 id="C-11-新增的类型"><a href="#C-11-新增的类型" class="headerlink" title="C++11 新增的类型"></a>C++11 新增的类型</h2><p>char16_t<br>char32_t</p>
-<h2 id="const限定符"><a href="#const限定符" class="headerlink" title="const限定符"></a>const限定符</h2><h2 id="C-11增加auto"><a href="#C-11增加auto" class="headerlink" title="C++11增加auto"></a>C++11增加auto</h2><p>auto不是为了简单类型推导存在的，是为了复杂类型推导而存在的</p>
-<h2 id="课后习题"><a href="#课后习题" class="headerlink" title="课后习题"></a>课后习题</h2><ul>
-<li>c++为什么有多种整形？<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">因为不同整型有着不同的存储范围，为不同规模的数据准备</span><br></pre></td></tr></table></figure></li>
-</ul>
-</article>
+
+  
+
+<div class="nav-wrap"><nav class="sub wiki cap"><a class="active" href="/project/wiki/">所有项目</a></a><a href="/project/wiki/tags/%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98/index.html">博客主题</a></a></nav></div>
+
+  <div class="post-list wiki"><a class="post-card wiki " href="/project/wiki/stellar/index.html">
+<article class="md-text"><div class="excerpt"><div class="cap breadcrumb">博客主题</div><h2 class="post-title">Stellar - 每个人的独立博客</h2><p>Stellar 是一个内置 wiki 系统的 hexo 主题，适合综合型站点使用。同时也拥有简约而精美的视觉设计和丰富的标签插件，帮助您简单从容地应对各种场合。</p></div></article>
+</a></div>
+
 
 
 
@@ -268,7 +264,7 @@
 <!-- required -->
 
   
-<script src="/js/main.js" async></script>
+<script src="/project/js/main.js" async></script>
 
 
 
@@ -280,5 +276,5 @@
 
 
   </div>
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":200,"height":400},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script src="/project/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/project/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":200,"height":400},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
