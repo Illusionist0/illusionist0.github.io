@@ -31,7 +31,7 @@
 <meta property="og:description" content="第七章 函数——C++的编程模块函数原型 为什么需要原型1原型描述了函数到编译器的接口，也就是说，它将函数返回值的类型以及参数的类型和数量告诉编译器。 函数原型放在函数头，不需要提供变量名，有类型列表就够了 原型中的变量名相当于占位符，因此不必与函数定义中的变量名相同 原型有什么用？&#96; - 编译器正确处理函数返回值 编译器检查使用的参数数目是否正确 检查使用的参数类型是否正确，如果不正确则">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-04-15T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-03-24T10:13:59.823Z">
+<meta property="article:modified_time" content="2023-03-24T17:02:00.487Z">
 <meta property="article:author" content="Levi Tsui">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="CPP">
@@ -132,15 +132,15 @@
 </ol>
 <h2 id="指针和const"><a href="#指针和const" class="headerlink" title="指针和const"></a>指针和const</h2><p>有两种方法如下：</p>
 <ol>
-<li>指针指向一个常量对象<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int age=10;</span><br><span class="line">const int *p=&amp;age;</span><br></pre></td></tr></table></figure>
+<li>指针指向一个常量对象<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> age=<span class="number">10</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> *p=&amp;age;</span><br></pre></td></tr></table></figure>
 pt指向一个const int,因此不能使用pt来修改这个值。换句话来说，*pt的值为const，不能被修改。</li>
 </ol>
 <p>pt的声明不意味着他指向的值实际上就是一个常量，也就是age可以被修改。</p>
 <ul>
-<li>将const变量的地址赋给指向const的指针，可行<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">float g_e=9.80;</span><br><span class="line">const float *pe=&amp;g_e;//valid</span><br></pre></td></tr></table></figure></li>
-<li>将const变量的地址赋给常规指针，不可行<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const float g_m=1.63;</span><br><span class="line">float *pm=&amp;g_m;//invalid</span><br></pre></td></tr></table></figure></li>
-<li>一级间接关系，将非const指针赋给const指针是可以的<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int age=10;</span><br><span class="line">int *pd=&amp;age;//valid</span><br><span class="line">const int *pt=pd;//invalid</span><br></pre></td></tr></table></figure></li>
-<li>二级间接关系，与一级间接关系一样将const和非const混合的指针赋值方式将不再安全。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const int **pp2;</span><br><span class="line">int *p1;</span><br><span class="line">const int n=13;</span><br><span class="line">pp2=&amp;p1;//不被允许的语法，假设允许</span><br><span class="line">*pp2=&amp;n;//valid,both const,but sets p1 to point at n</span><br><span class="line">*p1=10;//valid,but changes const n</span><br></pre></td></tr></table></figure>
+<li>将const变量的地址赋给指向const的指针，可行<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">float</span> g_e=<span class="number">9.80</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">float</span> *pe=&amp;g_e;<span class="comment">//valid</span></span><br></pre></td></tr></table></figure></li>
+<li>将const变量的地址赋给常规指针，不可行<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">float</span> g_m=<span class="number">1.63</span>;</span><br><span class="line"><span class="type">float</span> *pm=&amp;g_m;<span class="comment">//invalid</span></span><br></pre></td></tr></table></figure></li>
+<li>一级间接关系，将非const指针赋给const指针是可以的<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> age=<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> *pd=&amp;age;<span class="comment">//valid</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> *pt=pd;<span class="comment">//invalid</span></span><br></pre></td></tr></table></figure></li>
+<li>二级间接关系，与一级间接关系一样将const和非const混合的指针赋值方式将不再安全。<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> **pp2;</span><br><span class="line"><span class="type">int</span> *p1;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> n=<span class="number">13</span>;</span><br><span class="line">pp2=&amp;p1;<span class="comment">//不被允许的语法，假设允许</span></span><br><span class="line">*pp2=&amp;n;<span class="comment">//valid,both const,but sets p1 to point at n</span></span><br><span class="line">*p1=<span class="number">10</span>;<span class="comment">//valid,but changes const n</span></span><br></pre></td></tr></table></figure>
 上述代码中将非const地址&amp;p1赋给了const指针pp2,因此可以使用p1来修改const数据。</li>
 </ul>
 <p>因此，仅当只有一层间接关系时，才可以将非const地址或者指针赋给const指针。</p>
@@ -153,7 +153,7 @@ pt指向一个const int,因此不能使用pt来修改这个值。换句话来说
 </li>
 </ul>
 <ol start="2">
-<li>指针本身声明为常量<br>使用const使得无法修改指针的值：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int sloth=3;</span><br><span class="line">const int * ps =&amp;sloth; //常量指针</span><br><span class="line">int * const finger= &amp;sloth;//指针常量</span><br></pre></td></tr></table></figure></li>
+<li>指针本身声明为常量<br>使用const使得无法修改指针的值：<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> sloth=<span class="number">3</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> * ps =&amp;sloth; <span class="comment">//常量指针</span></span><br><span class="line"><span class="type">int</span> * <span class="type">const</span> finger= &amp;sloth;<span class="comment">//指针常量</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 <h2 id="函数和二维数组"><a href="#函数和二维数组" class="headerlink" title="函数和二维数组"></a>函数和二维数组</h2><ul>
 <li>like<code> int sum(int *ar[4],int n);</code></li>
@@ -190,7 +190,7 @@ pt指向一个const int,因此不能使用pt来修改这个值。换句话来说
 
 </article>
 
-<div class="related-wrap reveal" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2023/03/13/ask/">The Wisdom of Asking Questions</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2020/04/15/cpp6/">CPP笔记06</a></div></section></div>
+<div class="related-wrap reveal" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2020/04/19/cpp8/">CPP笔记08</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2020/04/15/cpp6/">CPP笔记06</a></div></section></div>
 
 
 
