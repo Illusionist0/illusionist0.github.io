@@ -23,15 +23,15 @@
   <title>CPP笔记07 - Levi</title>
 
   
-    <meta name="description" content="第七章 函数——C++的编程模块 函数原型放在函数头，不需要提供变量名，有类型列表就够了 原型确保编译器正确处理函数返回值，检查使用的参数数目是否正确，检查使用的参数类型是否正确">
+    <meta name="description" content="第七章 函数——C++的编程模块函数原型 为什么需要原型1原型描述了函数到编译器的接口，也就是说，它将函数返回值的类型以及参数的类型和数量告诉编译器。 函数原型放在函数头，不需要提供变量名，有类型列表就够了 原型中的变量名相当于占位符，因此不必与函数定义中的变量名相同 原型有什么用？&#96; - 编译器正确处理函数返回值 编译器检查使用的参数数目是否正确 检查使用的参数类型是否正确，如果不正确则">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CPP笔记07">
 <meta property="og:url" content="https://illusionist0.github.io/2020/04/16/cpp7/index.html">
 <meta property="og:site_name" content="Levi">
-<meta property="og:description" content="第七章 函数——C++的编程模块 函数原型放在函数头，不需要提供变量名，有类型列表就够了 原型确保编译器正确处理函数返回值，检查使用的参数数目是否正确，检查使用的参数类型是否正确">
+<meta property="og:description" content="第七章 函数——C++的编程模块函数原型 为什么需要原型1原型描述了函数到编译器的接口，也就是说，它将函数返回值的类型以及参数的类型和数量告诉编译器。 函数原型放在函数头，不需要提供变量名，有类型列表就够了 原型中的变量名相当于占位符，因此不必与函数定义中的变量名相同 原型有什么用？&#96; - 编译器正确处理函数返回值 编译器检查使用的参数数目是否正确 检查使用的参数类型是否正确，如果不正确则">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-04-15T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-03-23T00:56:06.119Z">
+<meta property="article:modified_time" content="2023-03-24T10:13:59.823Z">
 <meta property="article:author" content="Levi Tsui">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="CPP">
@@ -83,7 +83,7 @@
 <widget class="widget-wrapper search"><div class="widget-body"><div class="search-wrapper" id="search"><form class="search-form"><input type="text" class="search-input" id="search-input" data-filter="/blog/" placeholder="文章搜索"><svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div></div></widget>
 
 
-<widget class="widget-wrapper toc single" id="data-toc"><div class="widget-header cap dis-select"><span class="name">CPP笔记07</span></div><div class="widget-body fs14"><div class="doc-tree active"></div></div></widget>
+<widget class="widget-wrapper toc single" id="data-toc"><div class="widget-header cap dis-select"><span class="name">CPP笔记07</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%8E%9F%E5%9E%8B"><span class="toc-text">函数原型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E5%92%8C%E6%8C%89%E5%80%BC%E4%BC%A0%E9%80%92"><span class="toc-text">函数参数和按值传递</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%95%B0%E7%BB%84%E5%8C%BA%E9%97%B4%E5%87%BD%E6%95%B0"><span class="toc-text">使用数组区间函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E5%92%8Cconst"><span class="toc-text">指针和const</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%92%8C%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="toc-text">函数和二维数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%92%8CC-style%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">函数和C-style字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%92%8C%E7%BB%93%E6%9E%84"><span class="toc-text">函数和结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%92%8Cstring%E5%AF%B9%E8%B1%A1"><span class="toc-text">函数和string对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%92%8Carray%E5%AF%B9%E8%B1%A1"><span class="toc-text">函数和array对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%92%E5%BD%92"><span class="toc-text">递归</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88"><span class="toc-text">函数指针</span></a></li></ol></div></div></widget>
 
 
 
@@ -102,10 +102,86 @@
 
 <article class='md-text content post'>
 <h1 class="article-title"><span>CPP笔记07</span></h1>
-<h1 id="第七章-函数——C-的编程模块"><a href="#第七章-函数——C-的编程模块" class="headerlink" title="第七章 函数——C++的编程模块"></a>第七章 函数——C++的编程模块</h1><ul>
+<h1 id="第七章-函数——C-的编程模块"><a href="#第七章-函数——C-的编程模块" class="headerlink" title="第七章 函数——C++的编程模块"></a>第七章 函数——C++的编程模块</h1><h2 id="函数原型"><a href="#函数原型" class="headerlink" title="函数原型"></a>函数原型</h2><ul>
+<li>为什么需要原型<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">原型描述了函数到编译器的接口，也就是说，它将函数返回值的类型以及参数的类型和数量告诉编译器。</span><br></pre></td></tr></table></figure></li>
 <li>函数原型放在函数头，不需要提供变量名，有类型列表就够了</li>
-<li>原型确保编译器正确处理函数返回值，检查使用的参数数目是否正确，检查使用的参数类型是否正确</li>
-<li></li>
+<li>原型中的变量名相当于占位符，因此不必与函数定义中的变量名相同</li>
+<li>原型有什么用？<br>&#96; - 编译器正确处理函数返回值<ul>
+<li>编译器检查使用的参数数目是否正确</li>
+<li>检查使用的参数类型是否正确，如果不正确则转换为正确的类型</li>
+</ul>
+</li>
+<li>C++原型与ANSI原型<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. ANSI C中原型是可选的，C++中是必须的</span><br><span class="line">2. 括号为空与在括号中使用关键字void是等效的——意味着函数没有参数。</span><br><span class="line">3. 在ANSI C中，括号为空意味着不指出参数——这意味这将在后面定义参数列表。</span><br><span class="line">  在C++中，不指定参数列表时应使用省略号：void fun(...);</span><br></pre></td></tr></table></figure></li>
+<li>仅当有意义时，原型化才会导致类型转换。例如，原型不会将整数转换为结构或指针。</li>
+<li>在编译阶段进行的原型化被称为<strong>静态类型检查</strong>，可以看出静态类型检查可捕获许多在运行阶段非常难以捕获的错误。</li>
+</ul>
+<h2 id="函数参数和按值传递"><a href="#函数参数和按值传递" class="headerlink" title="函数参数和按值传递"></a>函数参数和按值传递</h2><ul>
+<li>形参 (parameter)</li>
+<li>实参 (argument)</li>
+<li>函数中的变量是局部变量，也被称为自动变量，因为它们是在程序执行过程中自动被分配和释放的</li>
+<li>数组名与指针对应是好事吗？<ul>
+<li>是，将数组地址作为参数可以节省复制整个数组所需的时间和内存。</li>
+</ul>
+</li>
+<li>不要使用方括号表示法来传递数组长度<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void fun(int arr[size]);//bad prototype</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="使用数组区间函数"><a href="#使用数组区间函数" class="headerlink" title="使用数组区间函数"></a>使用数组区间函数</h2><ol>
+<li>传递起始指针和初始位置</li>
+<li>指定元素区间</li>
+<li>STL方法使用“超尾”</li>
+</ol>
+<h2 id="指针和const"><a href="#指针和const" class="headerlink" title="指针和const"></a>指针和const</h2><p>有两种方法如下：</p>
+<ol>
+<li>指针指向一个常量对象<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int age=10;</span><br><span class="line">const int *p=&amp;age;</span><br></pre></td></tr></table></figure>
+pt指向一个const int,因此不能使用pt来修改这个值。换句话来说，*pt的值为const，不能被修改。</li>
+</ol>
+<p>pt的声明不意味着他指向的值实际上就是一个常量，也就是age可以被修改。</p>
+<ul>
+<li>将const变量的地址赋给指向const的指针，可行<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">float g_e=9.80;</span><br><span class="line">const float *pe=&amp;g_e;//valid</span><br></pre></td></tr></table></figure></li>
+<li>将const变量的地址赋给常规指针，不可行<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const float g_m=1.63;</span><br><span class="line">float *pm=&amp;g_m;//invalid</span><br></pre></td></tr></table></figure></li>
+<li>一级间接关系，将非const指针赋给const指针是可以的<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int age=10;</span><br><span class="line">int *pd=&amp;age;//valid</span><br><span class="line">const int *pt=pd;//invalid</span><br></pre></td></tr></table></figure></li>
+<li>二级间接关系，与一级间接关系一样将const和非const混合的指针赋值方式将不再安全。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const int **pp2;</span><br><span class="line">int *p1;</span><br><span class="line">const int n=13;</span><br><span class="line">pp2=&amp;p1;//不被允许的语法，假设允许</span><br><span class="line">*pp2=&amp;n;//valid,both const,but sets p1 to point at n</span><br><span class="line">*p1=10;//valid,but changes const n</span><br></pre></td></tr></table></figure>
+上述代码中将非const地址&amp;p1赋给了const指针pp2,因此可以使用p1来修改const数据。</li>
+</ul>
+<p>因此，仅当只有一层间接关系时，才可以将非const地址或者指针赋给const指针。</p>
+<p><strong>如果数据类型本身不是指针，可以将const或非const数据的地址赋给指向const的指针，但只能将非const数据的地址赋给非const指针。</strong></p>
+<ul>
+<li><strong>尽可能使用const</strong><ul>
+<li>可以避免由于无意间修改数据而导致的编程错误；</li>
+<li>使用const使得函数能够处理const和非const实参，否则将只能接受非const数据。<br>  如果条件允许，则应将指针形参声明为指向const的指针。</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>指针本身声明为常量<br>使用const使得无法修改指针的值：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int sloth=3;</span><br><span class="line">const int * ps =&amp;sloth; //常量指针</span><br><span class="line">int * const finger= &amp;sloth;//指针常量</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="函数和二维数组"><a href="#函数和二维数组" class="headerlink" title="函数和二维数组"></a>函数和二维数组</h2><ul>
+<li>like<code> int sum(int *ar[4],int n);</code></li>
+</ul>
+<h2 id="函数和C-style字符串"><a href="#函数和C-style字符串" class="headerlink" title="函数和C-style字符串"></a>函数和C-style字符串</h2><ul>
+<li>char数组</li>
+<li>用引号括起的字符串常量</li>
+<li>被设置为字符串的地址的char指针<br>字符串与char数组的最大区别在于有内置的结束字符</li>
+</ul>
+<h2 id="函数和结构"><a href="#函数和结构" class="headerlink" title="函数和结构"></a>函数和结构</h2><ul>
+<li>结构名只是结构的名称，要获得结构的地址，必须使用地址运算符&amp;。</li>
+<li>在C语言和C++中，都使用符号&amp;来标识地址运算符。</li>
+<li>采用&amp;能够对原始结构进行操作。</li>
+</ul>
+<h2 id="函数和string对象"><a href="#函数和string对象" class="headerlink" title="函数和string对象"></a>函数和string对象</h2><ul>
+<li>like<code>string s[size];</code></li>
+</ul>
+<h2 id="函数和array对象"><a href="#函数和array对象" class="headerlink" title="函数和array对象"></a>函数和array对象</h2><ul>
+<li>like<code>array&lt;string,4&gt;seasons</code></li>
+</ul>
+<h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><ul>
+<li>注意，C++不允许main()调用自己，但是C语言允许</li>
+</ul>
+<h2 id="函数指针"><a href="#函数指针" class="headerlink" title="函数指针"></a>函数指针</h2><ul>
+<li>double (*pf)(int);&#x2F;&#x2F;pf是函数指针，即一个指向函数的指针；调用时(*pf)等价于pf</li>
+<li>double *pf(int);&#x2F;&#x2F;pf是指针函数，即一个函数，返回值为double指针</li>
+<li>auto自动类型推导只能用于单值初始化，但不能用于初始化列表</li>
+<li>auto存在一个潜在缺点： <code>auto pc=*pa;</code>会导致pc的类型于*pa一致，但使用时如果假定他类型为指针（如&amp;pa）将导致编译错误。</li>
 </ul>
 
 
