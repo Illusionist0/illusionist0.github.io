@@ -26,12 +26,12 @@
     <meta name="description" content="第八章 函数探幽C++内联函数 inline编译器使用相应的函数代码替换函数调用，运行速度更快，但代价是需要占用更多内存。  即典型的空间换时间。 应有选择的使用内联函数。 通过的做法是省略原型，将整个定义放在本应提供原型的地方。 注意，有些编译器认为函数过大或注意到函数调用了自己，因此将不会满足程序员内联函数的请求；但是有些编译器则没有实现。  宏和内联的区别  宏不能按值传递，如#define">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CPP笔记08">
-<meta property="og:url" content="https://illusionist0.github.io/2020/04/19/cpp8/index.html">
+<meta property="og:url" content="https://illusionist0.github.io/2020/04/23/cpp8/index.html">
 <meta property="og:site_name" content="Levi">
 <meta property="og:description" content="第八章 函数探幽C++内联函数 inline编译器使用相应的函数代码替换函数调用，运行速度更快，但代价是需要占用更多内存。  即典型的空间换时间。 应有选择的使用内联函数。 通过的做法是省略原型，将整个定义放在本应提供原型的地方。 注意，有些编译器认为函数过大或注意到函数调用了自己，因此将不会满足程序员内联函数的请求；但是有些编译器则没有实现。  宏和内联的区别  宏不能按值传递，如#define">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-04-18T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-03-24T17:02:12.676Z">
+<meta property="article:published_time" content="2020-04-22T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-04-12T17:21:21.201Z">
 <meta property="article:author" content="Levi Tsui">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="CPP">
@@ -98,7 +98,7 @@
       
 
 
-<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/C/">C++</a></div><div id="post-meta">发布于&nbsp;<time datetime="2020-04-18T16:00:00.000Z">2020-04-19</time></div></div>
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/C/">C++</a></div><div id="post-meta">发布于&nbsp;<time datetime="2020-04-22T16:00:00.000Z">2020-04-23</time></div></div>
 
 <article class='md-text content post'>
 <h1 class="article-title"><span>CPP笔记08</span></h1>
@@ -116,9 +116,63 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a;</span><br><span class="line"><span class="type">int</span> &amp;b=a;<span class="comment">//yes，等价于int *const pa=a;</span></span><br><span class="line"><span class="type">int</span> &amp;b;</span><br><span class="line">b=a;<span class="comment">//no，必须在声明引用变量时进行初始化</span></span><br></pre></td></tr></table></figure>
 <p>此时，b就是对a的引用。</p>
 <ul>
-<li>引用作为函数参数<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">swapr</span><span class="params">(<span class="type">int</span> &amp;a.<span class="type">int</span> &amp;b)</span></span>;<span class="comment">//引用</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">swapp</span><span class="params">(<span class="type">int</span> *p ,<span class="type">int</span> *q)</span></span>;<span class="comment">//传递值的指针地址</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">swapv</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span>;<span class="comment">//仅传递值，无法实现交换a和b</span></span><br></pre></td></tr></table></figure></li>
+<li>引用作为函数参数<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">swapr</span><span class="params">(<span class="type">int</span> &amp;a.<span class="type">int</span> &amp;b)</span></span>;<span class="comment">//引用</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">swapp</span><span class="params">(<span class="type">int</span> *p ,<span class="type">int</span> *q)</span></span>;<span class="comment">//传递值的指针地址</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">swapv</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span>;<span class="comment">//仅传递值，无法实现交换a和b</span></span><br></pre></td></tr></table></figure>
+创建临时变量（实参类型正确但非左值 or 实参类型不正确但可以转换，如long转int）</li>
+</ul>
+<p>临时变量将导致C++创建<strong>匿名变量</strong>进而导致参数的值传递给匿名变量，并让参数来引用变量。</p>
+<p>这样，就无法实现交换真正的a和b，只会交换临时变量。临时变量在现有标准中仍然只是造成警告，但是请不要忽略相关警告。</p>
+<p>此外，C++还新增了一种引用——右值引用。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">double</span> j=<span class="number">15.0</span>;</span><br><span class="line"><span class="type">double</span> &amp;&amp;ref=<span class="number">2.0</span>*j+<span class="number">18.5</span>;</span><br><span class="line">cout&lt;&lt;ref;<span class="comment">//replay: 48.5</span></span><br></pre></td></tr></table></figure>
+<ul>
 <li>引用用于结构</li>
 </ul>
+<p>引用非常适合用于结构和类，引用主要是为了这些类型，而非基本的内置类型。</p>
+<p>函数中ftype &amp;func(ftype&amp;target)和ftype func(ftype&amp;target)的区别在于后者将会返回target的拷贝，返回类型为引用，也就是意味着返回的是最初传递给func的对象，即未把修改后的对象返回。</p>
+<ul>
+<li><p>为何要返回引用？</p>
+<p>  因为传统返回相当于把返回值复制到临时位置，而返回引用将直接返回return的对象。</p>
+</li>
+<li><p>返回引用注意的问题</p>
+<p>  不能再函数中创建引用再返回引用,<br>  如</p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">const</span> f&amp; <span class="title">clone</span><span class="params">(f &amp;ft)</span></span>&#123;</span><br><span class="line">    f n;</span><br><span class="line">    n=ft;</span><br><span class="line">    <span class="keyword">return</span> n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  这样会造成返回一个指向临时变量n的引用，但是当函数运行完毕后它将不会存在。</p>
+<p>  返回一个作为参数传递给函数的引用，作为参数的引用将指向调用函数使用的数据，因此返回的引用也将指向这些数据。</p>
+<p>  又或者如</p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">const</span> f&amp; <span class="title">clone</span><span class="params">(f &amp;ft)</span></span>&#123;</span><br><span class="line">    f *pt;</span><br><span class="line">    *pt=ft;</span><br><span class="line">    <span class="keyword">return</span> *pt;</span><br><span class="line">&#125;</span><br><span class="line">f &amp; jo=<span class="built_in">clone</span>(three);</span><br></pre></td></tr></table></figure>
+<p>  pt指向结构，*pt就是该结构，看似会返回该结构，但其实将返回该结构的引用。这样，j会成为新结构的引用。</p>
+</li>
+<li><p>为何将const用于引用返回类型</p>
+<p>  因为常规返回类型是右值，但是引用返回类型可以是左值（可以被修改），为了避免这种情况的发生就需要加上const。当然，通常可以省略const，使代码简短，但是特性也会更加模糊。</p>
+</li>
+<li><p>引用用于类对象</p>
+  <figure class="highlight plaintext"><figcaption><span>s```和```const &string s```效果一样，但采取引用效率更高，因为函数不需要创建新的string对象。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">- 对象、继承和引用</span><br><span class="line">    </span><br><span class="line">    继承的第一个特征是派生类能够继承基类的方法，即可以使用基类的特性。</span><br><span class="line"></span><br><span class="line">    继承的另一个特征是，基类引用可以指向派生类对象，而无需进行强制类型转换。这种特征的实际结果是```可以定义接受基类引用作为参数的函数```，调用该函数时可以将基类对象作为参数也可以将派生类对象作为参数。</span><br><span class="line">- 何时使用引用参数</span><br><span class="line"></span><br><span class="line">    使用引用参数的主要原因有两个：</span><br><span class="line">    1. 程序员能够修改调用函数中的数据对象；</span><br><span class="line">    2. 通过传递引用而不是整个数据对象，可以提高程序的运行速度。</span><br><span class="line"></span><br><span class="line">    当数据对象较大（如结构和类对象），第二个原因最重要。</span><br><span class="line"></span><br><span class="line">    对于使用传递的值而不作修改的函数：</span><br><span class="line">    - 如果数据对象**很小**，如内置数据类型或小型结构，则**按值传递**。</span><br><span class="line">    - 如果数据对象是**数组**，则使用**指针**。</span><br><span class="line">    - 如果数据对象是**较大的结构**，则使用**const指针或const引用**。</span><br><span class="line">    - 如果数据对象是**类对象**，则使用**const引用**。</span><br><span class="line">    对于修改调用函数中数据的函数：</span><br><span class="line">    - 如果数据对象是**内置数据类型**，则使用**指针**。</span><br><span class="line">    - 如果数据对象是**数组**，则只能使用**指针**。</span><br><span class="line">    - 如果数据对象是**结构**，则使用**指针或引用**。</span><br><span class="line">    - 如果数据对象是**类对象**，则使用**引用**。</span><br><span class="line">## 默认参数</span><br><span class="line">默认参数是指当函数调用中省略了实参时自动使用的一个值，缺省将默认采用初始化值，否则将覆盖。</span><br><span class="line"></span><br><span class="line">对于带参列表，必须**从右到左**添加默认值。</span><br><span class="line">## 函数重载</span><br><span class="line">函数多态是C++在C语言基础上新增的功能。默认参数让不同数目的参数调用同一函数，函数多态则能够使用多个同名函数，与函数重载是同一回事。</span><br><span class="line"></span><br><span class="line">函数重载的关键是函数的参数列表——也称为**函数特征标**，指的是参数类型和/或参数数目。</span><br><span class="line"></span><br><span class="line">注：返回类型可以不同，但是特征标也必须不同。</span><br><span class="line"></span><br><span class="line">名称修饰（对原始名称进行表面看来无意义的修饰，将对参数数目和类型进行编码）</span><br><span class="line">## 函数模板</span><br><span class="line">在C++98添加关键字typename之前，C++使用关键字class创建模板。</span><br><span class="line"></span><br><span class="line">如果不考虑向后兼容的问题，则声明类型参数时应使用typename。</span><br><span class="line"></span><br><span class="line">局限在于**有时候可能无法处理某些类型**，比如数组或者指针并不能进行乘法。但是通用化确实是有意义的。</span><br><span class="line"></span><br><span class="line">- 显式具体化</span><br><span class="line">```c++</span><br><span class="line">// 非模板版本</span><br><span class="line">void _swap(job &amp;,job &amp;);</span><br><span class="line">// 模板版本</span><br><span class="line">template&lt;typename T&gt;</span><br><span class="line">void _swap(T&amp;,T&amp;);</span><br><span class="line">// 显式具体化</span><br><span class="line">template&lt;&gt; void _swap&lt;job&gt;(job &amp;,job &amp;);</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>如果有多个原型，编译器在选择原型时，<strong>非模板版本优先于显式具体化和模板版本，而显式具体化优先于使用模板生成的版本</strong>。</p>
+<ul>
+<li><p>实例化和具体化</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 显示实例化</span></span><br><span class="line"><span class="keyword">template</span> <span class="type">void</span> _swap&lt;job&gt;(job &amp;,job &amp;);</span><br><span class="line"><span class="comment">// 显式具体化</span></span><br><span class="line"><span class="keyword">template</span>&lt;&gt; <span class="type">void</span> _swap&lt;job&gt;(job &amp;,job &amp;);</span><br></pre></td></tr></table></figure>
+<p>区别在于实例化不需要额外的函数定义，但是具体化则不采用模板来生成函数定义，因此必须有自己的函数定义，同时后面有&lt;&gt;。</p>
+</li>
+<li><p>重载解析<br>C++ 需要一个定义良好的策略，来决定为函数嗲用使用哪一个函数定义，尤其是有多个参数时，这个过程称为<strong>重载解析</strong>。</p>
+</li>
+</ul>
+<p>过程：</p>
+<ol>
+<li>创建候选函数列表。&#x2F;名称相同</li>
+<li>使用候选函数列表创建可行函数列表。&#x2F;参数数目正确，有一个隐式转换序列。</li>
+<li>确定是否有最佳的可行函数。&#x2F;如果有则使用，否则报错。</li>
+</ol>
+<p>匹配规则：</p>
+<ol>
+<li>完全匹配，常规函数优先于模板。</li>
+<li>提升转换（char-&gt;int）。</li>
+<li>标准转换（int-&gt;char）。</li>
+<li>用户定义的转换。</li>
+</ol>
+<p>完全匹配可能会有多个匹配的原型，会产生二义性错误。但是有时候，非const会优先匹配非const参数。</p>
+<p>非模板函数会优先于模板函数。</p>
+<p>C++ 11新增的关键字<strong>decltype</strong>将会解决T1 x和T2 y相加得到z的类型的问题，如<code>decltype(x+y)z=x+y;</code></p>
+<p><code>double h(int x,float y);</code>可以改写为<code>auto h(int x,float y)-&gt;double</code></p>
 
 
 <div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
