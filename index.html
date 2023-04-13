@@ -74,7 +74,7 @@
 <div class="widgets">
 <widget class="widget-wrapper search"><div class="widget-body"><div class="search-wrapper" id="search"><form class="search-form"><input type="text" class="search-input" id="search-input" placeholder="站内搜索"><svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div></div></widget>
 
-<widget class="widget-wrapper recent"><div class="widget-header cap theme dis-select"><span class="name">最近更新</span></div><div class="widget-body related-posts fs14"><a class="item title" href="/2020/04/23/cpp8/"><span class="title">CPP笔记08</span></a><a class="item title" href="/2020/04/16/cpp7/"><span class="title">CPP笔记07</span></a><a class="item title" href="/2020/04/15/cpp6/"><span class="title">CPP笔记06</span></a><a class="item title" href="/2020/04/14/cpp5/"><span class="title">CPP笔记05</span></a><a class="item title" href="/2020/04/13/cpp4/"><span class="title">CPP笔记04</span></a></div></widget>
+<widget class="widget-wrapper recent"><div class="widget-header cap theme dis-select"><span class="name">最近更新</span></div><div class="widget-body related-posts fs14"><a class="item title" href="/2020/04/28/cpp10/"><span class="title">CPP笔记10</span></a><a class="item title" href="/2020/04/26/cpp9/"><span class="title">CPP笔记09</span></a><a class="item title" href="/2020/04/23/cpp8/"><span class="title">CPP笔记08</span></a><a class="item title" href="/2020/04/16/cpp7/"><span class="title">CPP笔记07</span></a><a class="item title" href="/2020/04/15/cpp6/"><span class="title">CPP笔记06</span></a></div></widget>
 
 
 </div>
@@ -105,6 +105,29 @@ Describe the question accurately
 Give feedback to the person you ask
 
 </p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2023-03-12T16:00:00.000Z">2023-03-13</time></span><span class="cap breadcrumb">Principles</span></div></article>
+</a><a class="post-card post " href="/2020/04/28/cpp10/">
+<article class="md-text"><h2 class="post-title">CPP笔记10</h2><div class="excerpt"><p>第十章 对象和类过程性编程和面向对象编程OOP方法
+
+从用户角度考虑对象——描述对象所需的数据以及描述用户与数据交互所需的操作。
+完成对接口的描述后，需要确定如何实现接口和数据存储。
+使用新的设计方案创建出程序。
+
+抽象和类类规范一般由两个部分组成：
+
+类声明：以数据成员的方式描述数据部分，以成员函数（方法method）的方式描述公有接口
+类方法定义：描述如何实现类成员函数
+
+C++要使用类...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2020-04-27T16:00:00.000Z">2020-04-28</time></span><span class="cap breadcrumb">C++</span></div></article>
+</a><a class="post-card post " href="/2020/04/26/cpp9/">
+<article class="md-text"><h2 class="post-title">CPP笔记09</h2><div class="excerpt"><p>第九章 内存模型和名称空间单独编译
+在IDE中，不要将头文件加入到项目列表中，也不要再源代码文件中使用#include来包含其他源代码文件。
+
+在同一个文件中只能将同一个头文件包含一次。预处理编译命令#ifndef xxx可以避免多次包含同一个头文件。
+
+多个库的链接，两个编译器可能将同一个函数生成不同的修饰名称，因此在链接编译模块时，请确保所有对象文件或库都是由同一个编译器生成的。
+
+
+存...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2020-04-25T16:00:00.000Z">2020-04-26</time></span><span class="cap breadcrumb">C++</span></div></article>
 </a><a class="post-card post " href="/2020/04/23/cpp8/">
 <article class="md-text"><h2 class="post-title">CPP笔记08</h2><div class="excerpt"><p>第八章 函数探幽C++内联函数
 inline编译器使用相应的函数代码替换函数调用，运行速度更快，但代价是需要占用更多内存。
@@ -183,15 +206,12 @@ c++为什么有多种整型？1因为不同整型有着不同的存储范围，�
 C++11 新特性原始（raw）字符串可包含回车
 C++和C有一项不寻常的特性可以连续使用赋值运算符
 123int a,b,c;a=b=c=10;赋值从右向左进行，10首先赋给c，c的值赋给b,b的...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2020-04-11T16:00:00.000Z">2020-04-12</time></span><span class="cap breadcrumb">C++</span></div></article>
-</a><a class="post-card post " href="/2020/04/11/cpp1/">
-<article class="md-text"><h2 class="post-title">CPP笔记01</h2><div class="excerpt"><p>第一章 预备知识
-
-c（c++）程序的生成过程： 编写源代码-&gt;编译-&gt;链接 。
-对应的各个阶段处理的文件的扩展名为： .c或.cpp-&gt;.obj-&gt;.exe。
-编译
-何为编译？12345首先我们要明白两个概念，源程序和目标程序。源程序：是指用源语言写的，有待翻译的程序，如我们自己写的一段c++代码，这段代码只有我们自己能看懂，计算机是不懂，计算机只能理解二进制。目标...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2020-04-10T16:00:00.000Z">2020-04-11</time></span><span class="cap breadcrumb">C++</span></div></article>
 </a></div>
   
+  <div class='paginator-wrap dis-select'>
+  <span class="extend prev" rel="prev"></span><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"></a>
+  </div>
+
 
 
 
